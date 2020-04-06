@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="x5-orientation" content="portrait">
+  <title>原型模式</title>
+  <link rel="stylesheet" href="">
+  <style>
+    h2 {text-align: center;}
+  </style>
+</head>
+<body>
+  <div>
+    <h2>知识点</h2>
+    <div>
+      <ul>
+        <li>__proto__ 是对象实例才有的属性，指向对象的原型。</li>
+        <li>prototype 是构造函数才有的属性，该属性指向了一个对象，这个对象正是调用该构造函数而创建的实例的原型</li>
+        <li>实例的__proto__属性 和 构造函数的 prototype 都指向该对象原型</li>
+      </ul>
+    </div>
+
+    <div>
+      <ul>
+        <li>Function的prototype和__proto__属性都指向f () 匿名函数</li>
+        <li>Object作为构造函数时，他的prototype指向Object.prototype对象原型，作为实例时，他的__proto__指向匿名函数。我们可以认为Function实例和Object实例都是继承于该匿名函数。</li>
+        <li>匿名函数作为$\color{red}{顶级构造函数}$，他不需要prototype属性，即prototype=undefined，当作为对象时，他的对象原型是Object.prototype。</li>
+        <li>Object.prototype作为$\color{red}{顶级构造对象}$，他的__proto__等于null，表示继承于一个空的对象。没有prototype属性。</li>
+      </ul>
+    </div>
+    
+  </div>
+</body>
+
+<script>
+  function Person(name) {
+    this.name = name
+  }
+  let p = new Person('zty')
+  window._p = p
+  console.log('p = ', p)
+  console.log('p _proto_ = ', p.__proto__)
+  console.log('Person prototype = ', Person.prototype)
+  console.log('p.__proto__ === Person.prototype = ', p.__proto__ === Person.prototype)
+
+
+  console.log('Function.prototype === Function.__proto__', p.__proto__ === Person.prototype)
+  
+  console.log('Object.prototype = ', Object.prototype)
+  let objP = p.__proto__.__proto__
+  console.log('objP = ', objP)
+  console.log('objP === Object.prototype = ',  objP === Object.prototype)
+
+  // let p1 = Object.create(p)
+  let p1 = {}
+  Object.setPrototypeOf(p1, p)
+  window.p1 = p1
+  console.log('---- p1 = ', p1)
+  p1.name = 'rename'
+  console.log('p1 = ', p1)
+
+  console.log('p1 instanceof Person = ', p1 instanceof Person)
+  console.log('p.isPrototypeOf(p1) = ', p.isPrototypeOf(p1))
+</script>
+<script>
+  console.log('\r\n')
+  console.log('--------------')
+  console.log('\r\n')
+
+  console.log('Object.__proto__ ::: ', Object.__proto__)
+  console.log('Object.prototype ::: ', Object.prototype)
+
+  console.log('Object.prototype.__proto__ ::: ', Object.prototype.__proto__)
+  console.log('Object.prototype.prototype ::: ', Object.prototype.prototype)
+
+  console.log('Function.__proto__ ::: ', Function.__proto__)
+  console.log('Function.prototype ::: ', Function.prototype)
+  console.log('Function.__proto__ === Function.prototype ::: ', Function.__proto__ === Function.prototype)
+  
+  console.log('Function.prototype.__proto__ ::: ', Function.prototype.__proto__)
+  console.log('Function.prototype.prototype ::: ', Function.prototype.prototype)
+</script>
+</html>
