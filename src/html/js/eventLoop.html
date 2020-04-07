@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eventLoop</title>
+  <style>
+    h3 {text-align: center;}
+  </style>
+</head>
+<body>
+  <div>
+    <div class="box">
+      <h3>EventLoop</h3>
+      <ol>
+        <li>从任务队列task queue选择中最先进入的任务执行，如果队列为空，则执行microtask queue</li>
+        <li>检查该task是否注册了microtask queue，如果有，则按注册顺序依次执行microtask。如果没有则继续下一步。</li>
+        <li>一些其他操作，例如界面渲染.</li>
+        <li>重复以上步骤</li>
+      </ol>
+    </div>
+  </div>
+</body>
+<script>
+  console.log('---------script-1---------')
+
+  const box = document.querySelector('.box')
+  const observer = new MutationObserver(function (mutationsList, observer) {
+    console.log('MutationObserver')
+  });
+  observer.observe(box, { attributes: true, childList: true, subtree: true });
+  box.setAttribute('name', 'rename')
+
+  setTimeout(() => {
+    console.log('setTimeout--1')
+    new Promise(resolve => resolve()).then(() => {
+      console.log('in setTimeout promise then')
+    })
+  })
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('in Promise setTimeout')
+    })
+    console.log('in promise')
+    resolve()
+  }).then(() => {
+    console.log('in promise then')
+  })
+
+  setTimeout(() => {
+    console.log('setTimeout--2')
+  })
+</script>
+<script>
+  console.log('---------script-2---------')
+</script>
+</html>
