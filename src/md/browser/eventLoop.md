@@ -256,7 +256,8 @@ setTimeout(()=>{
 <br/>
 
 ### 结束语
-<a href="../../html/js/eventLoop.html" >eventLoop - html代码文件</a>
-<a href="../../html/node/eventLoop.js" >eventLoop - nodejs</a>
+<a href="../../case/html/js/eventLoop.html" >eventLoop - html代码文件</a>
+
+<a href="../../case/node/eventLoop.js" >eventLoop - nodejs</a>
 
 如果有错误或者不严谨的地方，欢迎指正~

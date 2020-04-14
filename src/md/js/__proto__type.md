@@ -135,6 +135,6 @@ p.isPrototypeOf(p1) // true
 ```
 
 ## 结束语
-<a href="../../html/js/__proto__type.html" >原型和原型链 - html代码文件</a>
+<a href="../../case/html/js/__proto__type.html" >原型和原型链 - html代码文件</a>
 
 如果有错误或者不严谨的地方，欢迎指正~
