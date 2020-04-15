@@ -237,8 +237,8 @@ vuex
 <br/>
 
 - props
-- 
- ```javascript
+
+```javascript
 // eventBus.js
 // 父组件
 <child name="11" cb={this.callback}></child>
@@ -285,7 +285,7 @@ class ChildComponent extends React.Component {
 }
 ```
 
--redux和react-redux
+- redux和react-redux
 - 用js实现发布订阅模式
 
 <br/>
@@ -362,7 +362,198 @@ class MyComponent extends React.Component {
 
 ## 路由
 
+<br/>
+<div align=center><font color=green size=5>3.1 基本模式</font></div>
+<br/>
+
+<font size=4 color=#a39f93>Vue2.0</font>
+
+vue-router
+- hash模式：hash模式
+- history模式：h5历史模式
+- abstract模式：自定义路由历史栈，在不支持以上模式的环境下会使用该模式
+
+
+<br/>
+<font size=4 color=#a39f93>React</font>
+<br/>
+<br/>
+
+react-router-dom
+- browserHistory：h5历史模式
+- hashHistory：h5历史模式
+- createMemoryHistory：和abstract模式类似
+
+
 ## 状态树
+
+<br/>
+<div align=center><font color=green size=5>4.1 核心概念</font></div>
+<br/>
+
+<font size=4 color=#a39f93>Vue2.0</font>
+
+- state：数据
+- getter：可看成数据的计算属性
+- mutation：唯一更改数据的方法 通过 store.commit 使用相应的 mutation方法
+- Action：支持异步的提交mutation  通过 store.dispatch 使用相应的Action方法
+- module：数据分模块
+
+<br/>
+<font size=4 color=#a39f93>React</font>
+<br/>
+<br/>
+
+- state：数据
+- action：一个对象，约定对象的type表示操作的意图，playload属性保存得到的数据。通常会使用一个actionCreator函数返回该对象
+- reducer：纯函数，通常使用switch判断action.type来对state做不同的操作
+- 异步action：标准的做法是使用 Redux Thunk 中间件，当然还有其他中间件，此时的actionCreator函数将不是返回一个对象，而是返回一个dispatch action的函数
+- Middleware：中间件，用于增强store的功能，例如上面的Redux Thunk 中间件使得store支持dispatch异步action
+- 分模块：天然的模块化，每个reducer和相应的state，action就是一个模块，你可以用combineReducers，合并这些reducer。
+
+
+<br/>
+<div align=center><font color=green size=5>4.2 基本例子</font></div>
+<br/>
+
+<font size=4 color=#a39f93>Vue2.0</font>
+
+需要安装vuex，npm install -S vuex
+
+```javascript
+// store.js
+import Vue from "vue";
+import Vuex from "vuex";
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state: {
+    count: 1
+  },
+  getters: {
+    getCount(state) {
+      return `count: ${state.count}`;
+    }
+  },
+  mutations: {
+    addCount(state) {
+      state.count += 1;
+    },
+    reduceCount(state) {
+      state.count -= 1;
+    },
+    addSome(state, num) {
+      state.count += num;
+    }
+  },
+  actions: {
+    add(context) {
+      context.commit("addCount");
+    },
+    del(context) {
+      context.commit("reduceCount");
+    },
+    addSome(context, num) {
+      context.commit("addSome", num);
+    }
+  }
+});
+
+// main.js 挂载store对象
+new Vue({
+  store,
+  render: h => h(App)
+}).$mount("#app");
+```
+
+<br/>
+<font size=4 color=#a39f93>React</font>
+<br/>
+<br/>
+
+需要执行 npm install -S redux, react-redux， redux-chunk
+
+```javascript
+// user.redux.js
+const AUTH_SUCCESS = 'auth_success'
+
+const initState = {
+  isAuth: false,
+  msg: ''
+}
+
+// reducers
+export function user(state = initState, action) {
+  switch (action.type) {
+    case AUTH_SUCCESS:
+      return { ...state, isAuth: true, ...action.payload }
+    default:
+      return state
+  }
+}
+
+// actionCreator
+function authSuccess(obj) {
+  const {pwd, ...data} = obj // 过滤pwd属性
+  return { type: AUTH_SUCCESS, payload: data }
+}
+
+// chatUser.redux.js 
+import axios from 'axios'
+
+const USER_LIST = 'user_list'
+
+const initState = {
+  userlist: []
+}
+
+function userlist(data) {
+  return { type: USER_LIST, playload: data }
+}
+
+
+export function chatUser(state = initState, action) {
+  switch (action.type) {
+    case USER_LIST:
+      return {...state, userlist: action.playload}
+    default:
+      return state
+  }
+}
+
+export function getUserList(type) {
+  return dispatch => {
+    axios.get(`/user/list?type=${type}`).then(res => {
+      if (res.data.code === 0) {
+        dispatch(userlist(res.data.data))
+      }
+    })
+  }
+}
+
+// index.redux.js
+import { combineReducers } from 'redux'
+import { user } from './redux/user.redux'
+import { chatUser } from './redux/chatUser.redux'
+
+// 合并state和reducer
+export default combineReducers({ user, chatUser })
+
+// 组件A
+import { connect } from 'react-redux'
+import { getUserList } from '../redux/chatUser.redux'
+
+// 挂载state action到组件的props
+@connect(
+	state => state.user, // 这里只挂载了user部分的state
+	{getUserList}
+)
+class Register extends React.Component {
+  ...
+}
+// this.props.xxx, this.props.getUserList
+```
 
 
 ## 结束语
