@@ -1,86 +1,73 @@
 # zty-knowledge
 All Knowledge You Should Know
 
-## LIST
+## Browser
 
+<a href="./src/md/browser/eventLoop.md" >1. EventLoop</a>
+<br>
 
 <br>
-<div align=center><font color=#008000 size=4>Browser</font></div>
-<br/>
 
-<a href="./src/md/browser/eventLoop.md" >EventLoop</a>
-
-<br>
----
-<br>
-<div align=center><font color=#008000 size=4>HTML</font></div>
+## HTML
 <br/>
 
 <br>
----------
+
 <br>
-<div align=center><font color=#008000 size=4>CSS</font></div>
+
+## CSS
+
+
+<br>
+
+<br>
+
+## Javascript
+
+<br/>
+
+<a href="./src/md/js/__proto__type.md" >1. 原型和原型链</a>
+
+<a href="./src/md/js/module_mechanism.md" >2. JS五种模块化方案</a>
+
+<a href="./src/md/FE_Common_Optimization.md" >3. 常见前端优化手段</a>
+
+<br>
+
+
+<br>
+
+## Vue
+
+<br>
+
+<br>
+
+### React
+
+
+<a href="./src/md/vue_vs_react.md" >1. React VS Vue</a>
+
+<br>
+
+<br>
+
+## Node</font></div>
+
 <br/>
 
 <br>
----
-<br>
-<div align=center><font color=#008000 size=4>Javascript</font></div>
+
+## Engineering
+
 <br/>
-
-<a href="./src/md/js/__proto__type.md" >原型和原型链</a>
-
-<a href="./src/md/js/module_mechanism.md" >JS五种模块化方案</a>
-
-<a href="./src/md/FE_Common_Optimization.md" >常见前端优化手段</a>
-
-<br>
----
-<br>
-<div align=center><font color=#008000 size=4>Vue</font></div>
-<br/>
-
-<br>
----
-<br>
-<div align=center><font color=#008000 size=4>React</font></div>
-<br/>
-
-
-<a href="./src/md/vue_vs_react.md" >React VS Vue</a>
-
-<br>
----
-<br>
-<div align=center><font color=#008000 size=4>Node</font></div>
-<br/>
-
-<br>
----
-<br>
-<div align=center><font color=#008000 size=4>Engineering</font></div>
-<br/>
-
 
 <br/>
 
 ## 结束语
+
+如果有疑问或者发现错误，可以在 issues 里提出疑问或勘误。
+
 书山有路勤为径，学海无涯苦作舟
 
 我会的，你也会。我不会的，你会。加油！！！
-
-***author: zty***
-
-***email: zty1160051490@163.com***
-
-
-*********
-
-<br/>
-----------
-
-*********
-----------
-
-
-<div align=center><font color=green size=4>Engineering</font></div>
