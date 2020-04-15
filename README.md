@@ -65,6 +65,8 @@ All Knowledge You Should Know
 ## 结束语
 书山有路勤为径，学海无涯苦作舟
 
+我会的，你也会。我不会的，你会。加油！！！
+
 ***author: zty***
 
 ***email: zty1160051490@163.com***
