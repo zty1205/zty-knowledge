@@ -32,6 +32,8 @@ All Knowledge You Should Know
 
 <a href="./src/md/js/module_mechanism.md" >JS五种模块化方案</a>
 
+<a href="./src/md/FE_Common_Optimization.md" >常见前端优化手段</a>
+
 <br>
 ---
 <br>
