@@ -360,10 +360,30 @@ class MyComponent extends React.Component {
 }
 ```
 
+<br/>
+<div align=center><font color=green size=5>2.7 基本原理</font></div>
+<br/>
+
+<font size=4 color=#a39f93>Vue2.0</font>
+
+- 基于Object.defineProperty()拦截set和get
+
+<br/>
+<font size=4 color=#a39f93>React</font>
+<br/>
+<br/>
+
+- 依托于setState的更新队列
+
+- 使用了同样的API：
+```javascript
+createElement('标签', '属性', '子节点')
+```
+
 ## 路由
 
 <br/>
-<div align=center><font color=green size=5>3.1 基本模式</font></div>
+<div align=center><font color=green size=5>3.1 路由模式</font></div>
 <br/>
 
 <font size=4 color=#a39f93>Vue2.0</font>
@@ -384,6 +404,13 @@ react-router-dom
 - hashHistory：h5历史模式
 - createMemoryHistory：和abstract模式类似
 
+<br/>
+<div align=center><font color=green size=5>3.2 基本实例</font></div>
+<br/>
+
+？显示
+？导航守卫
+？基本原理
 
 ## 状态树
 
@@ -555,6 +582,8 @@ class Register extends React.Component {
 // this.props.xxx, this.props.getUserList
 ```
 
+？数据流
+？基本原理
 
 ## 结束语
 
