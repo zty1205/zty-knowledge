@@ -4,7 +4,7 @@
 
 <font size=4 color=#a39f93>Vue</font>
 
-- 核心：vue
+- 核心：vue (vue2.0, vue3.0)
 - 路由：vue-route
 - 状态树：vuex
 - 服务端渲染：nuxt
@@ -12,7 +12,7 @@
 
 <font size=4 color=#a39f93>React</font>
 
-- 核心：react, react-dom
+- 核心：react (react), react-dom
 - 路由：react-router, react-router-dom
 - 状态树：react-redux, redux
 - 服务端渲染：next
@@ -400,9 +400,11 @@ vue-router
 <br/>
 
 react-router-dom
-- browserHistory：h5历史模式
-- hashHistory：h5历史模式
-- createMemoryHistory：和abstract模式类似
+- BrowserHistory：h5历史模式
+- HashHistory：h5历史模式
+- MemoryHistory：和abstract模式类似
+- StaticRouter：一个永远不会改变位置的\<Router>。这在服务器端渲染场景中非常有用
+- NativeRouter：RN使用
 
 <br/>
 <div align=center><font color=green size=5>3.2 基本实例</font></div>

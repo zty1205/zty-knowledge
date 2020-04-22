@@ -47,6 +47,12 @@ let addEvent1 = (type, element, fun) => {
 }
 ```
 
+## 框架中的优化
+
+<a href="./vue/vue2.0.md">vue相关优化</a>
+
+<a href="./react/react.md">react相关优化</a>
+
 ## 工程化
 - 使用CDN分发网络，请求资源更快
 - 减少HTTP请求次数，减少DNS查询次数（尽量减少主机名），避免重定向
